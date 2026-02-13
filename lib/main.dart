@@ -25,7 +25,7 @@ class _AppiadasScreenState extends State<AppiadasScreen> {
   Widget build(BuildContext context) {
     // return Text("Ola turma");
     return Scaffold(
-      appBar: AppBar(title: Text("Appiadas")),
+      //appBar: AppBar(title: Text("Appiadas")),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -34,6 +34,8 @@ class _AppiadasScreenState extends State<AppiadasScreen> {
           ),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "Aqui terá uma piada",
