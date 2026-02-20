@@ -31,12 +31,20 @@ class AppiadasScreen extends StatefulWidget {
 
 class _AppiadasScreenState extends State<AppiadasScreen> {
 
-  final List<String> _piadas = [
-    "Por que o dev levou o pc ao médico? Porque ele tava com vírus.",
-    "Por que o livro de matemática estava triste? Porque ele tinha vários problemas."
+  final List<Piada> _piadas = [
+    Piada(
+    pergunta: "Por que o dev levou o pc ao médico?", 
+    resposta: "Porque ele tava com vírus."
+    ),
+    Piada(
+    pergunta: "Por que o livro de matemática estava triste?", 
+    resposta: "Porque ele tinha vários problemas."
+    ),
   ];
 
-var _piadaSelecionada = "Aqui terá uma piada"; // underline antes da variavel significa que ela será privada
+Piada _piadaSelecionada = Piada(
+  pergunta: "Aqui terá uma piada",
+  resposta: ""); // underline antes da variavel significa que ela será privada
 
 void _trocarPiada() {
   final i = Random().nextInt(_piadas.length);
@@ -66,7 +74,7 @@ void _trocarPiada() {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                _piadaSelecionada,
+                "${_piadaSelecionada.pergunta}\n${_piadaSelecionada.resposta}",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
