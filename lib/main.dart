@@ -15,6 +15,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Piada {
+  final String pergunta;
+  final String resposta;
+
+  Piada({required this.pergunta, required this.resposta});
+}
+
 class AppiadasScreen extends StatefulWidget {
   const AppiadasScreen({super.key});
 
