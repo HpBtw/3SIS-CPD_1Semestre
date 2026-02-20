@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,32 +23,64 @@ class AppiadasScreen extends StatefulWidget {
 }
 
 class _AppiadasScreenState extends State<AppiadasScreen> {
+
+  final List<String> _piadas = [
+    "Por que o dev levou o pc ao médico? Porque ele tava com vírus.",
+    "Por que o livro de matemática estava triste? Porque ele tinha vários problemas."
+  ];
+
+var _piadaSelecionada = "Aqui terá uma piada"; // underline antes da variavel significa que ela será privada
+
+void _trocarPiada() {
+  final i = Random().nextInt(_piadas.length);
+  setState(() {
+      _piadaSelecionada = _piadas[i];
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     // return Text("Ola turma");
     return Scaffold(
       //appBar: AppBar(title: Text("Appiadas")),
       body: Container(
+        // padding: EdgeInsets.all(16), substitui o child: padding
+        width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("images/background_joker.png"),
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              "Aqui terá uma piada",
-              style: TextStyle(
-                fontSize: 24,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold,
-                color: Colors.pinkAccent,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                _piadaSelecionada,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pinkAccent,
+                ),
               ),
-            ),
-          ],
+          
+              SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  onPressed: _trocarPiada,
+                  child: Text("Nova piada")),
+              ),
+            ],
+          ),
         ),
       ), // Text("textobase")
     );
